@@ -29,6 +29,32 @@ namespace ems_backend.Data
                 .WithMany(e => e.Attendances)
                 .HasForeignKey(a => a.EmployeeID)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    UserID = 1,
+                    UserName = "admin",
+                    PasswordHash = "admin123", // ⚠️ replace with hash later
+                    Role = "Admin"
+                },
+                new User
+                {
+                    UserID = 2,
+                    UserName = "hrmanager",
+                    PasswordHash = "hr123",
+                    Role = "HR"
+                },
+                new User
+                {
+                    UserID = 3,
+                    UserName = "employee1",
+                    PasswordHash = "emp123",
+                    Role = "Employee"
+                }
+            );
         }
+
+
     }
 }
